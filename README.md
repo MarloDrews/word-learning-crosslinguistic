@@ -59,6 +59,7 @@ following Braginsky et al. (2016) and Goodman, Dale & Li (2008).
 | CHILDES | child-directed speech for the input predictors | not yet retrieved | |
 | English norms | concreteness, valence, arousal, babiness | not yet retrieved | |
 | NoRaRe | native-language norms | not yet retrieved | |
+| English norms | concreteness, valence, arousal, babiness | from the reference repository | 2026-08-31 |
 
 Downloads are stored unchanged under `data/raw/`, one directory per source and
 retrieval date, and are not committed. Unpacking and every other transformation
@@ -67,6 +68,12 @@ happens in code, writing to `data/interim/`.
 Wordbank citation: Datapages (2026). *Wordbank* (Version 2.0) [Dataset]. Redivis.
 TalkBank requires citing at least one reference per CHILDES corpus used and
 acknowledging NICHD HD082736.
+
+English norms: Brysbaert, Warriner & Kuperman (2014), Warriner, Kuperman &
+Brysbaert (2013), Perry, Perlman & Lupyan (2015). We took the files from
+github.com/mikabr/aoa-prediction at commit 67764a7, so that our predictor
+values stay comparable to the published ones. The babiness ratings are not
+in the supplementary material of Perry et al. and we found no other source.
 
 ## Repository layout
 
