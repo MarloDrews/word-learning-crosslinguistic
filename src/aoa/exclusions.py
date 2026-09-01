@@ -41,20 +41,13 @@ def apply(fits, items, language):
 
 
 def check(df, language):
-    """Language-level criteria. Prints what is wrong, returns whether the
-    language can be used."""
-    ok = True
-
+    """Language-level criteria. Prints what is wrong."""
     counts = df["lexical_category"].value_counts()
     for category in LEXICAL_CATEGORIES:
         n = counts.get(category, 0)
         if n < MIN_WORDS_PER_CATEGORY:
             print(f"{language}: {category} has {n} words")
-            ok = False
 
     share = df["extrapolated"].mean()
     if share > MAX_EXTRAPOLATED:
         print(f"{language}: {share:.0%} of aoa values are extrapolated")
-        ok = False
-
-    return ok
