@@ -19,7 +19,8 @@ MODELS = RESULTS / "models"
 
 SNAPSHOTS = {
     "wordbank": "2026-08-31",
-    "norms": "2026-08-31"
+    "norms": "2026-08-31",
+    "braginsky": "2026-08-31",
 }
 
 # Wordbank spelling on the right, we filter on that and use the codes elsewhere
