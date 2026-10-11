@@ -29,10 +29,15 @@ def categories(items):
     return per_lemma.rename("lexical_category")
 
 
-def apply(fits, items, language):
+def apply(fits, counts, items, language):
     low, high = age_range(language)
 
-    df = fits.merge(categories(items), on="uni_lemma")
+    # words that stay below 50 percent at every age, from the proposal
+    # Their aoa is pure extrapolation, and a word no child says gets an aoa around 1e16
+    peak = (counts["n_produces"] / counts["n_children"]).groupby(counts["uni_lemma"]).max()
+    df = fits[fits["uni_lemma"].map(peak) >= 0.5]
+
+    df = df.merge(categories(items), on="uni_lemma")
     df = df[df["lexical_category"].isin(LEXICAL_CATEGORIES)]
 
     df["extrapolated"] = ~df["aoa"].between(low, high)

@@ -13,7 +13,7 @@ def build(language):
     counts = responses.load(language, admins, words)
     curves = fits.fit(counts)
 
-    df = exclusions.apply(curves, words, language)
+    df = exclusions.apply(curves, counts, words, language)
 
     # printing is enough, dropping a language should not happen silently
     exclusions.check(df, language)
