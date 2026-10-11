@@ -2,6 +2,7 @@
 the curve fits."""
 import pandas as pd
 
+from src.aoa.forms import FORMS, WORD_LIST_FORM
 from src.common.config import LANGUAGES, raw_dir
 
 PATH = raw_dir("wordbank") / "items.parquet"
@@ -10,7 +11,7 @@ COLUMNS = ["item_id", "form", "item_kind", "category", "item_definition",
            "uni_lemma", "lexical_category"]
 
 
-def load(language, forms=("WG", "WS"), keep_form="WG"):
+def load(language):
     df = pd.read_parquet(
         PATH,
         columns=COLUMNS + ["language"],
@@ -18,7 +19,7 @@ def load(language, forms=("WG", "WS"), keep_form="WG"):
     ).drop(columns="language")
 
     df = df[df["item_kind"] == "word"]
-    df = df[df["form"].isin(forms)]
+    df = df[df["form"].isin(FORMS[language])]
 
     # definitions carry trailing spaces in some languages
     df["item_definition"] = df["item_definition"].str.strip().str.lower()
@@ -30,8 +31,10 @@ def load(language, forms=("WG", "WS"), keep_form="WG"):
     df = df.dropna(subset="uni_lemma")
 
     # Braginsky keep definitions that appear on the WG form, not those on both
-    on_keep_form = df.loc[df["form"] == keep_form, "item_definition"]
-    df = df[df["item_definition"].isin(on_keep_form)]
+    word_list_form = WORD_LIST_FORM[language]
+    if word_list_form is not None:
+        on_word_list = df.loc[df["form"] == word_list_form, "item_definition"]
+        df = df[df["item_definition"].isin(on_word_list)]
 
     # from Braginsky, drops the whole lemma not just the starred item
     # no effect in our ten languages, the three English ones are WS only.

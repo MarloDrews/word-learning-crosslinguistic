@@ -2,6 +2,7 @@
 fits, the instrument characteristics and the split-half noise ceiling."""
 import pandas as pd
 
+from src.aoa.forms import FORMS
 from src.common.config import LANGUAGES, raw_dir
 
 PATH = raw_dir("wordbank") / "administrations.parquet"
@@ -12,14 +13,14 @@ COLUMNS = ["data_id", "child_id", "dataset_name", "form", "age", "in_age_range"]
 EXCLUDE_DATASETS = ["Fernald"]
 
 
-def load(language, forms=("WG", "WS"), exclude_datasets=EXCLUDE_DATASETS):
+def load(language, exclude_datasets=EXCLUDE_DATASETS):
     df = pd.read_parquet(
         PATH,
         columns=COLUMNS + ["language"],
         filters=[("language", "==", LANGUAGES[language])],
     ).drop(columns="language")
 
-    df = df[df["form"].isin(forms)]
+    df = df[df["form"].isin(FORMS[language])]
     df = df[~df["dataset_name"].isin(exclude_datasets)]
 
     # Forms first, otherwise a child's earliest administration could be on a

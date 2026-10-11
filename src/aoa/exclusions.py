@@ -1,6 +1,7 @@
 """Exclusion criteria from the proposal. Applied per language, after the fits."""
 import pandas as pd
 
+from src.aoa.forms import FORMS
 from src.common.config import LANGUAGES, LEXICAL_CATEGORIES, raw_dir
 
 MIN_WORDS_PER_CATEGORY = 30
@@ -16,7 +17,7 @@ def age_range(language):
         filters=[("language", "==", LANGUAGES[language]),
                  ("in_age_range", "==", True)],
     )
-    ages = admins.loc[admins["form"].isin(("WG", "WS")), "age"]
+    ages = admins.loc[admins["form"].isin(FORMS[language]), "age"]
     return ages.min(), ages.max()
 
 
