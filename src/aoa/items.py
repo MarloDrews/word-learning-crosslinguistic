@@ -24,10 +24,13 @@ def load(language):
     # definitions carry trailing spaces in some languages
     df["item_definition"] = df["item_definition"].str.strip().str.lower()
 
-    # a WS item without a uni_lemma inherits it from the WG item of the same definition
-    # No English item lacks one but 5002 rows across the table do
+    # fills missing uni_lemmas from items with the same definition, if it has only one lemma
+    # Braginsky overwrite all of them, which gives house and home ("casa") the same responses
     lemmas = df[["item_definition", "uni_lemma"]].dropna().drop_duplicates()
-    df = df.drop(columns="uni_lemma").merge(lemmas, on="item_definition", how="left")
+    lemmas = lemmas.drop_duplicates("item_definition", keep=False)
+    df["uni_lemma"] = df["uni_lemma"].fillna(
+        df["item_definition"].map(lemmas.set_index("item_definition")["uni_lemma"])
+    )
     df = df.dropna(subset="uni_lemma")
 
     # Braginsky keep definitions that appear on the WG form, not those on both
