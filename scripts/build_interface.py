@@ -14,9 +14,11 @@ def build(language):
     curves = fits.fit(counts)
 
     df = exclusions.apply(curves, counts, words, language)
+    df = exclusions.check(df, language)
 
-    # printing is enough, dropping a language should not happen silently
-    exclusions.check(df, language)
+    if df.empty:
+        print(f"{language}: excluded, no file written")
+        return
 
     df = df.drop(columns="extrapolated").merge(english.load(words), on="uni_lemma")
     df["language"] = language

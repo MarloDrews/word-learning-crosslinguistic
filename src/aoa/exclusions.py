@@ -47,13 +47,18 @@ def apply(fits, counts, items, language):
 
 
 def check(df, language):
-    """Language-level criteria. Prints what is wrong."""
+    """Language-level criteria. Drops what fails and says why."""
+    share = df["extrapolated"].mean()
+    if share > MAX_EXTRAPOLATED:
+        print(f"{language}: {share:.0%} of aoa values are extrapolated")
+        return df.iloc[:0]
+
+    # only the category goes, not the language, see docs/DECISIONS.md
     counts = df["lexical_category"].value_counts()
     for category in LEXICAL_CATEGORIES:
         n = counts.get(category, 0)
         if n < MIN_WORDS_PER_CATEGORY:
-            print(f"{language}: {category} has {n} words")
+            print(f"{language}: {category} dropped, {n} words")
+            df = df[df["lexical_category"] != category]
 
-    share = df["extrapolated"].mean()
-    if share > MAX_EXTRAPOLATED:
-        print(f"{language}: {share:.0%} of aoa values are extrapolated")
+    return df
