@@ -6,8 +6,32 @@ from src.common.config import raw_dir
 
 DIR = raw_dir("norms")
 
+# Wordbank 2.0 names pronouns by glossing codes, Braginsky's replacement tables predate that
+# These are the English items under each code, with "he" moved out of 3SG.POSS where Wordbank files it
+PRONOUNS = {
+    "1SG": ["I", "me"],
+    "1SG.POSS": ["my", "mine"],
+    "1SG.REFL": ["myself"],
+    "2SG": ["you"],
+    "2SG.POSS": ["your"],
+    "2SG.REFL": ["yourself"],
+    "3SG": ["he", "she", "it", "him"],
+    "3SG.POSS": ["his", "her", "hers"],
+    "1PL": ["we", "us"],
+    "1PL.POSS": ["our"],
+    "3PL": ["they", "them"],
+    "3PL.POSS": ["their"],
+}
+
 
 def _lookup(lemmas, replacements, norms, columns):
+
+    pronouns = pd.DataFrame(
+        [(code, word) for code, words in PRONOUNS.items() for word in words],
+        columns=["uni_lemma", "replacement"],
+    )
+    replacements = pd.concat([replacements, pronouns])
+
     df = lemmas.merge(replacements, on="uni_lemma", how="left")
 
     word = df["replacement"].where(df["replacement"].notna() & (df["replacement"] != ""),
