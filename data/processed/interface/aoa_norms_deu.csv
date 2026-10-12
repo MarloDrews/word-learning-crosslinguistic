@@ -1,10 +1,10 @@
 language,uni_lemma,lexical_category,aoa,concreteness,valence,arousal,babiness
-deu,1PL,function_words,28.661509298609076,,,,
-deu,1PL.POSS,function_words,29.627713901076447,,,,
-deu,1SG,function_words,23.239332475791254,,,,
-deu,1SG.POSS,function_words,21.060593473621,,,,
-deu,2SG,function_words,25.124143692988508,,,,
-deu,2SG.POSS,function_words,27.26763897863679,,,,
+deu,1PL,function_words,28.661509298609076,3.335,,,3.6891025645
+deu,1PL.POSS,function_words,29.627713901076447,1.97,,,5.454545455
+deu,1SG,function_words,23.239332475791254,4.13,,,2.217647059
+deu,1SG.POSS,function_words,21.060593473621,2.99,,,3.8409090910000003
+deu,2SG,function_words,25.124143692988508,4.11,,,2.545454545
+deu,2SG.POSS,function_words,27.26763897863679,2.37,,,2.333333333
 deu,a,function_words,21.579785771281507,1.46,,,3.454545455
 deu,a little,function_words,27.44045279323124,,,,
 deu,above,function_words,22.938214508892536,3.33,,,2.416666667

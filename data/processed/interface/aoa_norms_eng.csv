@@ -1,10 +1,10 @@
 language,uni_lemma,lexical_category,aoa,concreteness,valence,arousal,babiness
-eng,1SG,function_words,21.587032826862412,,,,
-eng,1SG.POSS,function_words,20.592426919969082,,,,
-eng,2SG,function_words,24.69180621862941,,,,
-eng,2SG.POSS,function_words,30.715021863226013,,,,
-eng,3SG,function_words,28.084521740114067,,,,
-eng,3SG.POSS,function_words,30.246691880072706,,,,
+eng,1SG,function_words,21.587032826862412,4.13,,,2.217647059
+eng,1SG.POSS,function_words,20.592426919969082,2.99,,,3.8409090910000003
+eng,2SG,function_words,24.69180621862941,4.11,,,2.545454545
+eng,2SG.POSS,function_words,30.715021863226013,2.37,,,2.333333333
+eng,3SG,function_words,28.084521740114067,3.41,,,4.37141779775
+eng,3SG.POSS,function_words,30.246691880072706,2.9166666666666665,,,4.851674641333333
 eng,airplane,nouns,21.385713213874187,4.96,5.25,5.62,
 eng,all,function_words,27.7042132761203,2.27,,,2.1875
 eng,all gone,predicates,20.512085178486792,2.04,6.5,2.57,

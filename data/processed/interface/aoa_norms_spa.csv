@@ -1,11 +1,11 @@
 language,uni_lemma,lexical_category,aoa,concreteness,valence,arousal,babiness
-spa,1SG,function_words,22.14162990278159,,,,
-spa,1SG.POSS,function_words,20.032550324074336,,,,
-spa,2SG,function_words,24.722164548575954,,,,
-spa,2SG.POSS,function_words,26.78690180460158,,,,
-spa,3PL,function_words,33.615010435626985,,,,
-spa,3SG,function_words,24.975851433223642,,,,
-spa,3SG.POSS,function_words,36.09799958982021,,,,
+spa,1SG,function_words,22.14162990278159,4.13,,,2.217647059
+spa,1SG.POSS,function_words,20.032550324074336,2.99,,,3.8409090910000003
+spa,2SG,function_words,24.722164548575954,4.11,,,2.545454545
+spa,2SG.POSS,function_words,26.78690180460158,2.37,,,2.333333333
+spa,3PL,function_words,33.615010435626985,2.9850000000000003,,,3.5045454544999997
+spa,3SG,function_words,24.975851433223642,3.41,,,4.37141779775
+spa,3SG.POSS,function_words,36.09799958982021,2.9166666666666665,,,4.851674641333333
 spa,REFL,function_words,33.13571614131972,,,,
 spa,a,function_words,26.059829745139872,1.46,,,3.454545455
 spa,a lot,function_words,27.24996544793509,2.37,5.64,4.33,
