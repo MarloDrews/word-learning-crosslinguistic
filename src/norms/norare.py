@@ -31,6 +31,12 @@ VARIABLES = {
         "valence": "Verheyen-2020-1000-VALENCE_MEAN",
         "arousal": "Verheyen-2020-1000-AROUSAL_MEAN",
     },
+    # not a transfer, a second English study as the baseline for how well two norm sets agree
+    "eng": {
+        "concreteness": "Scott-2019-Ratings-ENGLISH_CONCRETENESS_MEAN",
+        "valence": "Scott-2019-Ratings-ENGLISH_VALENCE_MEAN",
+        "arousal": "Scott-2019-Ratings-ENGLISH_AROUSAL_MEAN",
+    },
 }
 
 NORMS = ["concreteness", "valence", "arousal"]
